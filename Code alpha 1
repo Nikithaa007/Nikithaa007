@@ -1,0 +1,39 @@
+Sure, here's a basic implementation of a flashcard quiz app using Python:
+class Flashcard:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+class FlashcardDeck:
+    def __init__(self):
+        self.flashcards = []
+
+    def add_flashcard(self, flashcard):
+        self.flashcards.append(flashcard)
+
+    def quiz(self):
+        random.shuffle(self.flashcards)
+        correct_answers = 0
+        total_questions = len(self.flashcards)
+
+        for flashcard in self.flashcards:
+            print(flashcard.question)
+            user_answer = input("Your answer: ")
+            if user_answer.lower() == flashcard.answer.lower():
+                print("Correct!")
+                correct_answers += 1
+            else:
+                print("Incorrect. The correct answer is:", flashcard.answer)
+
+        print("\nQuiz complete!")
+        print("You got", correct_answers, "out of", total_questions, "questions correct.")
+
+# Example usage:
+deck = FlashcardDeck()
+deck.add_flashcard(Flashcard("What is the capital of France?", "Paris"))
+deck.add_flashcard(Flashcard("What is the largest planet in our solar system?", "Jupiter"))
+deck.add_flashcard(Flashcard("Who wrote 'Romeo and Juliet'?", "William Shakespeare"))
+
+print("Welcome to the Flashcard Quiz App!")
+print("Let's start the quiz...\n")
+deck.quiz()
